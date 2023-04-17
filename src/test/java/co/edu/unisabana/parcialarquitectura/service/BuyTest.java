@@ -26,6 +26,14 @@ class BuyTest {
         });
     }
 
-    //jejeje
+    @Test
+    void Given_vendedorYcompradorNOIguales_When_invoke_makePurchase_Then_obtengouno()
+    {
+        int buyCode=1, vendorCode=2;
+        String item="carro";
+        Mockito.when(database.savePurchase(buyCode,item)).thenReturn(1);
+        Assertions.assertEquals("Product sold",buy.makePurchase(vendorCode,buyCode,item));
+        Mockito.verify(database).savePurchase(buyCode,item);
+    }
 
 }
